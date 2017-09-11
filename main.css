@@ -1,0 +1,41 @@
+.codes {
+	display: flex;
+	justify-content: space-between;
+}
+.codeArea {
+	width: 600px;
+	height: 400px;
+	font-family: 'Roboto Mono', monospace;
+	/*font-family: 'Ubuntu Mono', monospace;*/
+	font-size: 17px;
+	overflow-wrap: unset;
+}
+.runArea {
+	width: 600px;
+	height: 400px;
+	font-family: 'Roboto Mono', monospace;
+	/*font-family: 'Ubuntu Mono', monospace;*/
+	font-size: 17px;
+	overflow-wrap: unset;
+	border: 1px solid #AAA
+}
+.stackArea {
+	width: 600px;
+	height: 20px;
+	font-family: 'Roboto Mono', monospace;
+	/*font-family: 'Ubuntu Mono', monospace;*/
+	border: 1px solid #AAA;
+	margin-top: 10px;
+}
+.outputArea {
+	width: 600px;
+	height: 20px;
+	font-family: 'Roboto Mono', monospace;
+	/*font-family: 'Ubuntu Mono', monospace;*/
+	border: 1px solid #AAA;
+	margin-top: 10px;
+}
+
+.focus {
+	background-color: #FAA;
+}

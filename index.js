@@ -9,8 +9,8 @@ let step = 0
 function run(interval) {
 	if(isRunning)return
 	isRunning = true
-	stackA.innerText = ""
-	outputA.innerText = ""
+	stackA.innerText = String.fromCharCode(160)
+	outputA.innerText = String.fromCharCode(160)
 	const code = codeA.value.split("\n")
 	const codeASCII = []
 	for(let i = 0; i < code.length; i++) {
@@ -158,9 +158,11 @@ function run(interval) {
 					stack.push(prompt("Input an Character").charCodeAt(0))
 					break
 				case ".":
+					if(outputA.innerText.length === 1)outputA.innerText = ""
 					outputA.innerText += stack.pop().toString() + String.fromCharCode(160)
 					break
 				case ",":
+					if(outputA.innerText.length === 1)outputA.innerText = ""
 					outputA.innerText += String.fromCharCode(stack.pop()) + String.fromCharCode(160)
 					break
 				case "+":
@@ -227,6 +229,7 @@ function run(interval) {
 			isSkipNext = false
 		}
 		console.log(coord, stack)
+		stackA.innerText = stack.join(String.fromCharCode(160))
 		// console.log(code)
 
 		// update

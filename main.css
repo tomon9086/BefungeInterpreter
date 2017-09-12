@@ -21,19 +21,21 @@
 }
 .stackArea {
 	width: 600px;
-	height: 20px;
+	height: auto;
 	font-family: 'Roboto Mono', monospace;
 	/*font-family: 'Ubuntu Mono', monospace;*/
 	border: 1px solid #AAA;
 	margin-top: 10px;
+	word-break: break-word;
 }
 .outputArea {
 	width: 600px;
-	height: 20px;
+	height: auto;
 	font-family: 'Roboto Mono', monospace;
 	/*font-family: 'Ubuntu Mono', monospace;*/
 	border: 1px solid #AAA;
 	margin-top: 10px;
+	word-break: break-word;
 }
 
 .focus {

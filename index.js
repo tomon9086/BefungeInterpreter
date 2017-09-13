@@ -4,7 +4,7 @@ const stackA = document.getElementById("stackArea")
 const outputA = document.getElementById("outputArea")
 let isContinue = false
 let isRunning = false
-let step = 0
+
 
 function run(interval) {
 	if(isRunning)return
@@ -58,17 +58,11 @@ function run(interval) {
 	let isPushingASCII = false
 	let isSkipNext = false
 	isContinue = true
-	// while(isContinue) {
-	setInterval(() => {
-		if(!isContinue) {
-			isRunning = false
-			return
-		}
+	const step = () => {
 		[].forEach.call(document.getElementsByTagName("span"), (v, i) => {
 			v.setAttribute("class", "")
 		})
 		document.getElementById(coord[0] + "-" + coord[1]).setAttribute("class", "focus")
-		// if(!isSkipNext && step > 0) {
 		if(!isSkipNext) {
 			const char = code[coord[1]][coord[0]]
 			if(char.match(/\d/) !== null) {
@@ -230,16 +224,8 @@ function run(interval) {
 		}
 		console.log(coord, stack)
 		stackA.innerText = stack.join(String.fromCharCode(160))
-		// console.log(code)
 
 		// update
-
-		// if(step > 0) {
-		// 	coord[0] += diff[0]
-		// 	coord[1] += diff[1]
-		// 	step--
-		// }
-
 		coord[0] += diff[0]
 		coord[1] += diff[1]
 		if(coord[0] === code[0].length) {
@@ -254,6 +240,21 @@ function run(interval) {
 		if(coord[1] === -1) {
 			coord[1] = code.length - 1
 		}
-	}, interval);
-	// }
+	}
+	if(interval === undefined || !interval) {
+		const frame = () => {
+			step()
+			window.requestAnimationFrame(frame)
+		}
+		frame()
+	}
+	if(interval) {
+		setInterval(() => {
+			if(!isContinue) {
+				isRunning = false
+				return
+			}
+			step()
+		}, interval)
+	}
 }

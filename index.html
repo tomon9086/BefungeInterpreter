@@ -8,11 +8,11 @@
 </head>
 <body>
 	<div>
-		<input type="button" value=" Run" onclick="run(0)" />
-		<input type="button" value="Walk" onclick="run(300)" />
-		<input type="button" value="Start" onclick="step=Infinity" />
-		<input type="button" value="Stop" onclick="step=0" />
-		<input type="button" value="Step" onclick="step=1" />
+		<input type="button" value=" Run " onclick="run(-1)" />
+		<input type="button" value="Crawl" onclick="run(50)" />
+		<input type="button" value=" Walk" onclick="run(300)" />
+		<input type="button" value="Start" onclick="run(0)" />
+		<input type="button" value=" Stop" onclick="isContinue=false" />
 	</div>
 	<div class="codes">
 		<div><textarea id="codeArea" class="codeArea">
@@ -21,7 +21,7 @@
      ^g00_                    v
  ^+1                          <
                   >         :.^
-		</textarea></div>
+素数列挙</textarea></div>
 		<div id="runArea" class="runArea"></div>
 	</div>
 	<div id="stackArea" class="stackArea">&nbsp;</div>

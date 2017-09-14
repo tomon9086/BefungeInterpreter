@@ -4,10 +4,12 @@ const stackA = document.getElementById("stackArea")
 const outputA = document.getElementById("outputArea")
 let isContinue = false
 let isRunning = false
+let funcID
 
 
 function run(interval) {
 	if(isRunning)return
+	if(funcID !== undefined)clearInterval(funcID)
 	isRunning = true
 	stackA.innerText = String.fromCharCode(160)
 	outputA.innerText = String.fromCharCode(160)
@@ -222,7 +224,8 @@ function run(interval) {
 		} else {
 			isSkipNext = false
 		}
-		console.log(coord, stack)
+		// console.log(coord, stack)
+		// console.log(codeASCII)
 		stackA.innerText = stack.join(String.fromCharCode(160))
 
 		// update
@@ -244,17 +247,24 @@ function run(interval) {
 	if(interval === undefined || !interval) {
 		const frame = () => {
 			step()
-			window.requestAnimationFrame(frame)
+			setTimeout(frame, 0)
+			if(!isContinue)return
 		}
 		frame()
-	}
-	if(interval) {
-		setInterval(() => {
+	} else if(interval > 0) {
+		funcID = setInterval(() => {
 			if(!isContinue) {
 				isRunning = false
 				return
 			}
 			step()
 		}, interval)
+	} else {
+		const frame = () => {
+			step()
+			requestAnimationFrame(frame)
+			if(!isContinue)return
+		}
+		frame()
 	}
 }
